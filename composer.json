@@ -1,5 +1,7 @@
 {
     "name": "lsroudi/classifiedads",
+    "type": "symfony-bundle",
+    "keywords": ["classified ads", "petites annonces"],    
     "version": "dev-master",
     "license": "MIT",
     "require": {
@@ -12,5 +14,4 @@
         }
     },
     "target-dir": "Lsroudi/ClassifiedAdsBundle"
-
 }
