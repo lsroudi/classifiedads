@@ -10,6 +10,5 @@
         "psr-0": {
             "Lsroudi\\ClassifiedAdsBundle": ""
         }
-    },
-    "target-dir": "",
+    }
 }
