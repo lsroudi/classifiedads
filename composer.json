@@ -1,0 +1,15 @@
+{
+    "name": "lsroudi/classifiedads",
+    "version": "dev-master",
+    "source": {
+        "url": "https://github.com/lsroudi/ClassifiedAds.git",
+        "type": "git",
+        "reference": "master"
+    },
+    "autoload": {
+        "psr-0": {
+            "Lsroudi\\ClassifiedAdsBundle": ""
+        }
+    },
+    "target-dir": "Lsroudi/ClassifiedAdsBundle",
+}
