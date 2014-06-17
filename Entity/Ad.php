@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Description of Annonce
+ * Description of Ad
  *
  * (c) lsroudi <http://lsroudi.com/> <lsroudi@gmail.com>
  * 
