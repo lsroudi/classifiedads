@@ -49,13 +49,13 @@ class AdType extends AbstractType {
     {
         $resolver->setDefaults(array(
             'data_class' => $this->class,
-            'intention' => 'ad_creattion',
+            'intention' => 'ad',
         ));
     }
 
     public function getName()
     {
-        return 'ad';
+        return 'lsroudi_classified_ads_ad';
     }
 
 }
