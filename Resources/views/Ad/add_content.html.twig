@@ -1,0 +1,8 @@
+{% trans_default_domain 'LsroudiClassifiedAdsBundle' %}
+
+<form action="{{ path('lsroudi_classified_ads.ad_add') }}" {{ form_enctype(form) }} method="POST">
+    {{ form_widget(form) }}
+    <div>
+        <input type="submit" value="{{ 'add.submit'|trans }}" />
+    </div>
+</form>
