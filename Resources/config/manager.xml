@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    
+    <parameters>
+        <parameter key="lsroudi_classified_ads.ad.manager.class">Lsroudi\ClassifiedAdsBundle\Manager\AdManager</parameter>
+    </parameters>
+
+    <services>
+        <service id="lsroudi_classified_ads.ad.manager" class="%lsroudi_classified_ads.ad.manager.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />   
+            <argument>%lsroudi_classified_ads.model.ad.class%</argument>  
+            <argument type="service" id="lsroudi_classified_ads.model.ad.entity_manager" />                 
+        </service> 
+        <service id="lsroudi_classified_ads.model.ad.entity_manager" factory-service="doctrine" factory-method="getManager" class="Doctrine\ORM\EntityManager" public="false" />
+    </services>
+    
+</container>

@@ -56,7 +56,7 @@ class AdController
      */
     public function addAction()
     {
-   
+  
        return $this->templating->renderResponse('LsroudiClassifiedAdsBundle:Ad:add.html.twig', array(
             
         ));

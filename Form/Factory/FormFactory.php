@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Lsroudi\AnnonceBundle\Form\Factory;
+namespace Lsroudi\ClassifiedAdsBundle\Form\Factory;
 
 use Symfony\Component\Form\FormFactoryInterface;
 
