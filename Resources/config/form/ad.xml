@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="lsroudi_classified_bundle.ad.create.form.factory" class="Lsroudi\ClassifiedAdsBundle\Form\Factory\FormFactory">
+            <argument type="service" id="form.factory" />        
+            <argument>%lsroudi_classified.model.ad.name%</argument>
+            <argument>%lsroudi_classified.model.ad.type%</argument>
+            <argument>%lsroudi_classified.model.ad.validation_groups%</argument>
+        </service>
+
+        <service id="lsroudi_classified_bundle.model.ad.type" class="%lsroudi_classified.model.ad.form%">
+            <tag name="form.type" alias="ad" />
+            <argument>%lsroudi_classified.model.ad.class%</argument>
+            <argument type="service" id="doctrine.orm.entity_manager" />
+        </service>
+    </services>
+
+</container>
