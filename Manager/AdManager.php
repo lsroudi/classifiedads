@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * 
  * Description of AdManager
  *
  * (c) lsroudi <http://lsroudi.com/> <lsroudi@gmail.com>
