@@ -14,6 +14,7 @@ namespace Lsroudi\ClassifiedAdsBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Doctrine\ORM\EntityManager;
 
 class AdType extends AbstractType {
 

@@ -36,16 +36,16 @@ class AdManager extends BaseManager
         $this->class = $metadata->getName();
     }        
 
-    public function save(AdInterface $ad)
+    public function updateAd(AdInterface $ad)
     {
         $this->persistAndFlush($ad);
     }
 
-    public function remove(AdInterface $ad)
+    public function removAd(AdInterface $ad)
     {
         $this->delete($ad);
     }
-    public function getInstance()
+    public function createAd()
     {
         $class = $this->getClass();
         $ad = new $class;
