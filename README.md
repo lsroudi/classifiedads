@@ -26,3 +26,53 @@ public function registerBundles()
     );
 }
 ```
+
+### Step 3: Create your Own Ad class
+
+``` php
+
+<?php
+
+/**
+ * Description of Ad
+ *
+ * (c) lsroudi <http://lsroudi.com/> <lsroudi@gmail.com>
+ * 
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Acme\DemoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Lsroudi\ClassifiedAdsBundle\Entity\Ad as BaseAd;
+
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="lsroudi_classified_ad")
+ */
+class Ad extends  BaseAd
+{
+     
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    protected $id;
+    
+    public function __construct()
+    {
+        parent::__construct();       
+    }
+    
+   
+    public function getId()
+    {
+        return $this->id;
+    }
+}
+```
