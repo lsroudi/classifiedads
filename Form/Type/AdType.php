@@ -43,6 +43,12 @@ class AdType extends AbstractType {
     {
         $builder->add('title', 'text')
                 ->add('description', 'textarea')
+                ->add('category', 'entity', array(
+                    'class' => 'LsroudiClassifiedAdsBundle:Category',
+                    'property' => 'name',
+                    'expanded' => false,
+                    'multiple' => false
+                    ))
         ;
     }
 
