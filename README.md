@@ -34,7 +34,7 @@ public function registerBundles()
 <?php
 
 /**
- * Description of Annonce
+ * Description of Ad
  *
  * (c) lsroudi <http://lsroudi.com/> <lsroudi@gmail.com>
  * 
@@ -42,18 +42,20 @@ public function registerBundles()
  * file that was distributed with this source code.
  */
 
-namespace Lsroudi\ClassifiedAdsBundle\Entity;
+namespace Acme\DemoBundle\Entity;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
+use Lsroudi\ClassifiedAdsBundle\Entity\CategoryInterface;
+use Lsroudi\ClassifiedAdsBundle\Entity\Ad as BaseAd;
+
 
 /**
- * Category
- * @ORM\Entity()
- * @ORM\Table(name="lsroudi_classified_category")
+ * @ORM\Entity
+ * @ORM\Table(name="lsroudi_classified_ad")
  */
-class Category implements CategoryInterface {
-    
+class Ad extends  BaseAd
+{
+     
     /**
      * @var integer
      *
@@ -62,29 +64,37 @@ class Category implements CategoryInterface {
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     protected $id;
-    /**
-     * @var string
-     * @Assert\NotBlank(message = "lsroudi_classified_ads.category.name.not_blank",groups={"Default"})
-     * @ORM\Column(name="name", type="string", length=255 , nullable=false)
-     */
-    protected $name;
     
+     /**
+     * @var Lsroudi\ClassifiedAdsBundle\Entity\Category
+     *
+     * @ORM\ManyToOne(targetEntity="Lsroudi\ClassifiedAdsBundle\Entity\Category")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     * })
+     */
+    protected $category;
+    
+    public function __construct()
+    {
+        parent::__construct();       
+    }
+       
     public function getId()
     {
         return $this->id;
-    }    
-
-    public function getName()
-    {
-        
     }
-
-    public function setName($name)
+    
+    public function getCategory()
     {
-        $this->name = $name;
+        return $this->category;
+    }
+    
+    public function setCategory(CategoryInterface $category)
+    {
+        $this->category = $category;
         
         return $this;
     }   
-     
 }
 ```
