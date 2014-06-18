@@ -11,6 +11,7 @@
 
 namespace Lsroudi\ClassifiedAdsBundle\Entity;
 
+use Lsroudi\ClassifiedAdsBundle\Entity\CategoryInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -41,7 +42,15 @@ class Ad  implements AdInterface
      */
     protected $description;
     
-
+     /**
+     * @var Lsroudi\ClassifiedAdsBundle\Entity\Category
+     *
+     * @ORM\ManyToOne(targetEntity="Lsroudi\ClassifiedAdsBundle\Entity\Category")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     * })
+     */
+    protected $category;
     
     public function __construct()
     {
@@ -75,5 +84,17 @@ class Ad  implements AdInterface
         $this->title = $title;
         
         return $this;
-    }         
+    }    
+    
+    public function getCategory()
+    {
+        return $this->category;
+    }
+    
+    public function setCategory(CategoryInterface $category)
+    {
+        $this->category = $category;
+        
+        return $this;
+    }    
 }

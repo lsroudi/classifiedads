@@ -45,7 +45,6 @@ public function registerBundles()
 namespace Acme\DemoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Lsroudi\ClassifiedAdsBundle\Entity\CategoryInterface;
 use Lsroudi\ClassifiedAdsBundle\Entity\Ad as BaseAd;
 
 
@@ -65,16 +64,6 @@ class Ad extends  BaseAd
      */
     protected $id;
     
-     /**
-     * @var Lsroudi\ClassifiedAdsBundle\Entity\Category
-     *
-     * @ORM\ManyToOne(targetEntity="Lsroudi\ClassifiedAdsBundle\Entity\Category")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")
-     * })
-     */
-    protected $category;
-    
     public function __construct()
     {
         parent::__construct();       
@@ -83,18 +72,6 @@ class Ad extends  BaseAd
     public function getId()
     {
         return $this->id;
-    }
-    
-    public function getCategory()
-    {
-        return $this->category;
-    }
-    
-    public function setCategory(CategoryInterface $category)
-    {
-        $this->category = $category;
-        
-        return $this;
-    }   
+    }  
 }
 ```
