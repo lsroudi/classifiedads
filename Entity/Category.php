@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Description of Annonce
+ * Description of Category
  *
  * (c) lsroudi <http://lsroudi.com/> <lsroudi@gmail.com>
  * 
@@ -19,7 +19,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity()
  * @ORM\Table(name="lsroudi_classified_category")
  */
-class Category implements CategoryInterface {
+class Category implements CategoryInterface 
+{
     
     /**
      * @var integer
