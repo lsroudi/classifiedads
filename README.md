@@ -34,7 +34,7 @@ public function registerBundles()
 <?php
 
 /**
- * Description of Ad
+ * Description of Annonce
  *
  * (c) lsroudi <http://lsroudi.com/> <lsroudi@gmail.com>
  * 
@@ -42,19 +42,18 @@ public function registerBundles()
  * file that was distributed with this source code.
  */
 
-namespace Acme\DemoBundle\Entity;
+namespace Lsroudi\ClassifiedAdsBundle\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
-use Lsroudi\ClassifiedAdsBundle\Entity\Ad as BaseAd;
-
 
 /**
- * @ORM\Entity
- * @ORM\Table(name="lsroudi_classified_ad")
+ * Category
+ * @ORM\Entity()
+ * @ORM\Table(name="lsroudi_classified_category")
  */
-class Ad extends  BaseAd
-{
-     
+class Category implements CategoryInterface {
+    
     /**
      * @var integer
      *
@@ -63,37 +62,29 @@ class Ad extends  BaseAd
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     protected $id;
-    
-     /**
-     * @var Lsroudi\ClassifiedAdsBundle\Entity\Category
-     *
-     * @ORM\ManyToOne(targetEntity="Lsroudi\ClassifiedAdsBundle\Entity\Category")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")
-     * })
+    /**
+     * @var string
+     * @Assert\NotBlank(message = "lsroudi_classified_ads.category.name.not_blank",groups={"Default"})
+     * @ORM\Column(name="name", type="string", length=255 , nullable=false)
      */
-    protected $category;
+    protected $name;
     
-    public function __construct()
-    {
-        parent::__construct();       
-    }
-       
     public function getId()
     {
         return $this->id;
-    }
-    
-    public function getCategory()
+    }    
+
+    public function getName()
     {
-        return $this->category;
+        
     }
-    
-    public function setCategory($category)
+
+    public function setName($name)
     {
-        $this->category = $category;
+        $this->name = $name;
         
         return $this;
     }   
+     
 }
 ```
