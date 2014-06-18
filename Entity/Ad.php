@@ -61,6 +61,8 @@ class Ad  implements AdInterface
     public function setDescription($description)
     {
         $this->description = $description;
+        
+        return $this;
     }
     
     public function getTitle()
@@ -71,5 +73,7 @@ class Ad  implements AdInterface
     public function setTitle($title)
     {
         $this->title = $title;
+        
+        return $this;
     }         
 }
