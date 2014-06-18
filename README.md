@@ -64,15 +64,36 @@ class Ad extends  BaseAd
      */
     protected $id;
     
+     /**
+     * @var Lsroudi\ClassifiedAdsBundle\Entity\Category
+     *
+     * @ORM\ManyToOne(targetEntity="Lsroudi\ClassifiedAdsBundle\Entity\Category")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     * })
+     */
+    protected $category;
+    
     public function __construct()
     {
         parent::__construct();       
     }
-    
-   
+       
     public function getId()
     {
         return $this->id;
     }
+    
+    public function getCategory()
+    {
+        return $this->category;
+    }
+    
+    public function setCategory($category)
+    {
+        $this->category = $category;
+        
+        return $this;
+    }   
 }
 ```
