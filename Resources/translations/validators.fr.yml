@@ -1,0 +1,3 @@
+# ad validation
+lsroudi_classified_ads.ad.title.not_blank : Veuillez renseigner ce champ
+lsroudi_classified_ads.ad.description.not_blank : Veuillez renseigner ce champ

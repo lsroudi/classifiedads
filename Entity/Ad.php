@@ -11,6 +11,7 @@
 
 namespace Lsroudi\ClassifiedAdsBundle\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -28,12 +29,14 @@ class Ad  implements AdInterface
 
     /**
      * @var string
+     * @Assert\NotBlank(message = "lsroudi_classified_ads.ad.title.not_blank",groups={"Default"})
      * @ORM\Column(name="title", type="string", length=255 , nullable=false)
      */
     protected $title;
 
     /**
      * @var string
+     * @Assert\NotBlank(message = "lsroudi_classified_ads.ad.description.not_blank",groups={"Default"})
      * @ORM\Column(name="description", type="text", nullable=false)
      */
     protected $description;
