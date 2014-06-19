@@ -45,6 +45,7 @@ class Ad  implements AdInterface
      /**
      * @var Lsroudi\ClassifiedAdsBundle\Entity\Category
      *
+     * @Assert\NotBlank(message = "lsroudi_classified_ads.category.name.not_blank",groups={"Default"})      
      * @ORM\ManyToOne(targetEntity="Lsroudi\ClassifiedAdsBundle\Entity\Category")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")

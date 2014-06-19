@@ -11,7 +11,6 @@
 
 namespace Lsroudi\ClassifiedAdsBundle\Entity;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -32,7 +31,6 @@ class Category implements CategoryInterface
     protected $id;
     /**
      * @var string
-     * @Assert\NotBlank(message = "lsroudi_classified_ads.category.name.not_blank",groups={"Default"})
      * @ORM\Column(name="name", type="string", length=255 , nullable=false)
      */
     protected $name;
