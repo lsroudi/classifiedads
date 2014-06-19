@@ -42,7 +42,7 @@ class Category implements CategoryInterface
 
     public function getName()
     {
-        
+        return $this->name;
     }
 
     public function setName($name)
