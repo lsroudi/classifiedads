@@ -22,13 +22,13 @@ class AdType extends AbstractType {
      *
      * @var EntityManager
      */
-    private $em;
+    protected $em;
     
     /**
      *
      * @var string class name 
      */
-    private $class;
+    protected $class;
 
     /**
      * @param string $class The ad class name
