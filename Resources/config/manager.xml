@@ -7,15 +7,21 @@
     
     <parameters>
         <parameter key="lsroudi_classified_ads.ad.manager.class">Lsroudi\ClassifiedAdsBundle\Manager\AdManager</parameter>
+        <parameter key="lsroudi_classified_ads.category.manager.class">Lsroudi\ClassifiedAdsBundle\Manager\CategoryManager</parameter>        
     </parameters>
 
     <services>
         <service id="lsroudi_classified_ads.ad.manager" class="%lsroudi_classified_ads.ad.manager.class%">
             <argument type="service" id="doctrine.orm.entity_manager" />   
             <argument>%lsroudi_classified_ads.model.ad.class%</argument>  
-            <argument type="service" id="lsroudi_classified_ads.model.ad.entity_manager" />                 
+            <argument type="service" id="lsroudi_classified_ads.model.entity_manager" />                 
         </service> 
-        <service id="lsroudi_classified_ads.model.ad.entity_manager" factory-service="doctrine" factory-method="getManager" class="Doctrine\ORM\EntityManager" public="false" />
+        <service id="lsroudi_classified_ads.category.manager" class="%lsroudi_classified_ads.category.manager.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />   
+            <argument>%lsroudi_classified_ads.model.category.class%</argument>  
+            <argument type="service" id="lsroudi_classified_ads.model.entity_manager" />                 
+        </service>           
+        <service id="lsroudi_classified_ads.model.entity_manager" factory-service="doctrine" factory-method="getManager" class="Doctrine\ORM\EntityManager" public="false" />
     </services>
     
 </container>

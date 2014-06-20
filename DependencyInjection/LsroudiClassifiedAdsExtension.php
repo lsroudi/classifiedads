@@ -35,6 +35,8 @@ class LsroudiClassifiedAdsExtension extends Extension
         $this->container->setParameter('lsroudi_classified_ads.model.ad.class', $config['model']['ad']['class']);
         $this->container->setParameter('lsroudi_classified_ads.model.ad.form', $config['model']['ad']['form']);  
         
+        $this->container->setParameter('lsroudi_classified_ads.model.category.class', $config['model']['category']['class']);        
+        
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
         $loader->load('manager.xml');
