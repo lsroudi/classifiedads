@@ -11,10 +11,12 @@
 
 namespace Lsroudi\ClassifiedAdsBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\Security\Core\SecurityContext;
+use Lsroudi\ClassifiedAdsBundle\LsroudiClassifiedAdsEvents;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Lsroudi\ClassifiedAdsBundle\Event\FilterAdResponseEvent;
+use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 
 
 /**
@@ -76,7 +78,15 @@ class AdController
                
             if ($form->isValid()) {                 
                 
-                $adManager->updateAd($ad);                
+                $adManager->updateAd($ad); 
+                
+                $completedEvent = $dispatcher->dispatch(LsroudiClassifiedAdsEvents::AD_ADD_COMPLETED, new FilterAdResponseEvent($ad, $request));
+
+                if (null !== $response = $completedEvent->getResponse()) {
+                     $response = $completedEvent->getResponse();
+                 }
+                 
+                return $response;                  
             }
         } 
         
