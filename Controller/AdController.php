@@ -62,6 +62,8 @@ class AdController
         $formFactory = $this->container->get('lsroudi_classified_ads_bundle.ad.create.form.factory');
         /** @var $adManager \Lsroudi\ClassifiedAdsBundle\Manager\AdManager */
         $adManager = $this->container->get('lsroudi_classified_ads.ad.manager');
+        /** @var $dispatcher \Symfony\Component\EventDispatcher\EventDispatcherInterface */
+        $dispatcher = $this->container->get('event_dispatcher');            
         
         $ad = $adManager->createAd();
          
