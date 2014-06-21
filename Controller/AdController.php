@@ -13,6 +13,7 @@ namespace Lsroudi\ClassifiedAdsBundle\Controller;
 
 use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Lsroudi\ClassifiedAdsBundle\LsroudiClassifiedAdsEvents;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Lsroudi\ClassifiedAdsBundle\Event\FilterAdResponseEvent;
@@ -79,10 +80,13 @@ class AdController
             if ($form->isValid()) {                 
                 
                 $adManager->updateAd($ad); 
-                
-                $completedEvent = $dispatcher->dispatch(LsroudiClassifiedAdsEvents::AD_ADD_COMPLETED, new FilterAdResponseEvent($ad, $request));
 
-                if (null !== $response = $completedEvent->getResponse()) {
+                $url = $this->container->get('router')->generate('lsroudi_classified_ads.ad_add_confirmed');
+                $response = new RedirectResponse($url);
+                    
+                $completedEvent = $dispatcher->dispatch(LsroudiClassifiedAdsEvents::AD_ADD_COMPLETED, new FilterAdResponseEvent($ad, $request,$response));
+                
+                if (null !== $completedEvent->getResponse()) {
                      $response = $completedEvent->getResponse();
                  }
                  
@@ -94,4 +98,14 @@ class AdController
             'form' => $form->createView()
         ));
     }
+    
+    /**
+     * @Route("/confirmed", name="lsroudi_classified_ads.ad_add_confirmed")
+     */    
+    public function addConfirmedAction()
+    {
+        
+        return $this->container->get('templating')->renderResponse('LsroudiClassifiedAdsBundle:Ad:add_confirmed.html.twig');                    
+    }
+   
 }

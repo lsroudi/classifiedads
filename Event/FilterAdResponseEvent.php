@@ -20,7 +20,7 @@ class FilterAdResponseEvent extends AdEvent
     
     protected $response;
 
-    public function __construct(AdInterface $ad, Request $request, Response $response = null)
+    public function __construct(AdInterface $ad, Request $request, Response $response)
     {
         parent::__construct($ad, $request);
         $this->response = $response;
