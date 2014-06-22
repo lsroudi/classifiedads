@@ -14,7 +14,7 @@
         <service id="lsroudi_classified_ads_bundle.model.ad.type" class="%lsroudi_classified_ads.model.ad.form%">
             <tag name="form.type" alias="lsroudi_classified_ads_ad" />
             <argument>%lsroudi_classified_ads.model.ad.class%</argument>
-            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="lsroudi_classified_ads.model.entity_manager" />
         </service>
     </services>
 

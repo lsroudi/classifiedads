@@ -11,22 +11,21 @@
 
 namespace Lsroudi\ClassifiedAdsBundle\Manager;
 
-use Doctrine\ORM\EntityManager;
 use Doctrine\Common\Persistence\ObjectManager;
 use Lsroudi\ClassifiedAdsBundle\Entity\CategoryInterface;
 
 class CategoryManager extends BaseManager 
 {
 
-    protected $em;
     
     protected $objectManager;
     
     protected $class;
+    
+    protected $repository;
 
-    public function __construct(EntityManager $em, $class, ObjectManager $om) 
+    public function __construct($class, ObjectManager $om) 
     {
-        $this->em = $em;
         
         $this->objectManager = $om;
         $this->repository = $om->getRepository($class);
@@ -44,7 +43,7 @@ class CategoryManager extends BaseManager
     public function getCategoryByQuery($Query) 
     {
         
-        $qb = $this->em->createQueryBuilder();
+        $qb = $this->objectManager->createQueryBuilder();
         $qb->select('c')
                 ->from('LsroudiClassifiedAdsBundle:Category', 'c')
                 ->where('c.name LIKE :q')

@@ -15,14 +15,14 @@ abstract class BaseManager
 {
     protected function persistAndFlush($entity)
     {
-        $this->em->persist($entity);
-        $this->em->flush();
+        $this->objectManager->persist($entity);
+        $this->objectManager->flush();
     }
 
     protected function delete($entity)
     {
-        $this->em->remove($entity);
-        $this->em->flush();
+        $this->objectManager->remove($entity);
+        $this->objectManager->flush();
     }
     public function getClass()
     {

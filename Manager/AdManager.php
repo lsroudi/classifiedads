@@ -12,22 +12,19 @@
 
 namespace Lsroudi\ClassifiedAdsBundle\Manager;
 
-use Doctrine\ORM\EntityManager;
 use Doctrine\Common\Persistence\ObjectManager;
 use Lsroudi\ClassifiedAdsBundle\Entity\AdInterface;
 
 class AdManager extends BaseManager 
 {
 
-    protected $em;
     protected $objectManager;
     protected $class;
     protected $repository;
     
 
-    public function __construct(EntityManager $em, $class, ObjectManager $om)
+    public function __construct($class, ObjectManager $om)
     {
-        $this->em = $em;
 
         $this->objectManager = $om;
         $this->repository = $om->getRepository($class);
