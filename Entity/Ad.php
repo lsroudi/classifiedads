@@ -13,6 +13,7 @@ namespace Lsroudi\ClassifiedAdsBundle\Entity;
 
 use Lsroudi\ClassifiedAdsBundle\Entity\CategoryInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -45,14 +46,16 @@ class Ad  implements AdInterface
      /**
      * @var Lsroudi\ClassifiedAdsBundle\Entity\Category
      *
-     * @Assert\NotBlank(message = "lsroudi_classified_ads.category.name.not_blank",groups={"Default"})      
-     * @ORM\OneToOne(targetEntity="Lsroudi\ClassifiedAdsBundle\Entity\Category", cascade={"persist"})
+     * @Assert\NotBlank(message = "lsroudi_classified_ads.category.name.not_blank",groups={"Default"}) 
+     * @ORM\ManyToMany(targetEntity="Lsroudi\ClassifiedAdsBundle\Entity\Category", cascade={"persist"})
+     * @ORM\JoinColumn(name="ad_id", referencedColumnName="id")
      */
     protected $category;
     
     public function __construct()
     {
         $this->createdAt = new \DateTime('now');
+        $this->category = new ArrayCollection();
     }
 
     public function getCreatedAt()
@@ -91,8 +94,13 @@ class Ad  implements AdInterface
     
     public function setCategory(CategoryInterface $category)
     {
-        $this->category = $category;
+        $this->addCategory($category);
+    }
+    
+    public function addCategory(CategoryInterface $category)
+    {
+        $this->category->add($category);
         
         return $this;
-    }    
+    }
 }

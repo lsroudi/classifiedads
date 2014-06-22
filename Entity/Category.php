@@ -34,7 +34,7 @@ class Category implements CategoryInterface
      * @ORM\Column(name="name", type="string", length=255 , nullable=false)
      */
     protected $name;
-    
+
     public function getId()
     {
         return $this->id;
@@ -50,6 +50,6 @@ class Category implements CategoryInterface
         $this->name = $name;
         
         return $this;
-    }   
-     
+    } 
+    
 }

@@ -72,13 +72,13 @@ class AdController
          
         $form = $formFactory->createForm();
         $form->setData($ad);
-        
+
         if ('POST' === $request->getMethod()) {
             
             $form->bind($request);
                
             if ($form->isValid()) {                 
-                
+
                 $adManager->updateAd($ad); 
 
                 $url = $this->container->get('router')->generate('lsroudi_classified_ads.ad_add_confirmed');
