@@ -52,10 +52,18 @@ class Ad  implements AdInterface
      */
     protected $category;
     
+    /**
+     * @var boolean
+     * 
+     * @ORM\Column(name="enabled", type="boolean")         
+     */  
+    protected $enabled;
+    
     public function __construct()
     {
         $this->createdAt = new \DateTime('now');
         $this->category = new ArrayCollection();
+        $this->enabled = false;
     }
 
     public function getCreatedAt()
@@ -95,6 +103,8 @@ class Ad  implements AdInterface
     public function setCategory(CategoryInterface $category)
     {
         $this->addCategory($category);
+        
+        return $this;
     }
     
     public function addCategory(CategoryInterface $category)
