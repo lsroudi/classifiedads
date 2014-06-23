@@ -113,4 +113,16 @@ class Ad  implements AdInterface
         
         return $this;
     }
+    
+    public function setEnabled($boolean)
+    {
+        $this->enabled = $boolean;
+
+        return $this;
+    } 
+    
+    public function isEnabled()
+    {
+        return $this->enabled;
+    }    
 }
