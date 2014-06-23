@@ -31,8 +31,14 @@ class AdManager extends BaseManager
 
         $metadata = $om->getClassMetadata($class);
         $this->class = $metadata->getName();
-    }        
-
+    }   
+    
+    public function loadOne($id) 
+    {
+        return $this->repository
+                        ->findOneBy(array('id' => $id));
+    }
+    
     public function updateAd(AdInterface $ad)
     {
         $this->persistAndFlush($ad);
