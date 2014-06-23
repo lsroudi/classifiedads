@@ -33,11 +33,20 @@ class AdManager extends BaseManager
         $this->class = $metadata->getName();
     }   
     
-    public function loadOne($id) 
+    public function findAdBy(array $criteria) 
     {
-        return $this->repository
-                        ->findOneBy(array('id' => $id));
+        return $this->repository->findOneBy($criteria);
     }
+
+    public function findAds()
+    {
+        $qb = $this->objectManager->createQueryBuilder();
+        $qb->select('a')
+            ->from($this->class, 'a')               
+            ->orderBy('a.createdAt', 'DESC');
+        
+        return $qb;
+    }    
     
     public function updateAd(AdInterface $ad)
     {
