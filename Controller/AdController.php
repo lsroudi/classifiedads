@@ -115,7 +115,7 @@ class AdController
         $dispatcher = $this->container->get('event_dispatcher');          
 
         $qb = $adManager->findAds();
-//        die(var_dump($qb));
+        
         /* customize query with event pattern */
         $request = $this->container->get('request');
         
