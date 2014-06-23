@@ -17,8 +17,24 @@ class LsroudiClassifiedAdsEvents
     /**
      * The AD_ADD_COMPLETED event occurs after saving the ad in the add process.
      *
-     * This event allows you to access the response which will be sent.
+     * This event allows you to access the response which will be sent and modify it depend on your need.
      * The event listener method receives a Lsroudi\ClassifiedAdsBundle\Event\FilterClassifiedAdsResponseEvent instance.
      */
     const AD_ADD_COMPLETED = 'lsroudi.ad.completed';    
+    
+    /**
+     * The AD_LIST_INIT event occurs after query to generate ad list.
+     *
+     * This event allows you to custimize query.
+     * The event listener method receives a Lsroudi\ClassifiedAdsBundle\Event\FilterQueryForAdEvent instance.
+     */
+    const AD_LIST_INIT = 'lsroudi.ad.list.init';  
+    
+    /**
+     * The AD_LIST_GENERATED event occurs after list generated.
+     *
+     * This event allows you to access the response which will be sent and modify it depend on your need.
+     * The event listener method receives a Lsroudi\ClassifiedAdsBundle\Event\FilterQueryForAdEvent instance.
+     */
+    const AD_LIST_GENERATED = 'lsroudi.ad.list.generated';      
 }
