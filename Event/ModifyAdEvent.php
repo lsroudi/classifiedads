@@ -12,7 +12,6 @@
 namespace Lsroudi\ClassifiedAdsBundle\Event;
 
 use Lsroudi\ClassifiedAdsBundle\Entity\AdInterface;
-use Lsroudi\ClassifiedAdsBundle\Entity\AdInterface;
 
 class ModifyAdEvent extends AdEvent
 {
