@@ -18,6 +18,7 @@ use Lsroudi\ClassifiedAdsBundle\LsroudiClassifiedAdsEvents;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Lsroudi\ClassifiedAdsBundle\Event\FilterAdResponseEvent;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
+use Lsroudi\ClassifiedAdsBundle\Event\ModifyAdEvent;
 use Lsroudi\ClassifiedAdsBundle\Event\FilterQueryForAdEvent;
 use Lsroudi\ClassifiedAdsBundle\Event\FilterListAdResponseEvent;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
@@ -74,6 +75,9 @@ class AdController
         
         $ad = $adManager->createAd();
          
+        $event = new ModifyAdEvent($ad);
+        $dispatcher->dispatch(LsroudiClassifiedAdsEvents::AD_ADD_INIT, $event);
+        
         $form = $formFactory->createForm();
         $form->setData($ad);
 

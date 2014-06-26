@@ -20,7 +20,16 @@ class LsroudiClassifiedAdsEvents
      * This event allows you to access the response which will be sent and modify it depend on your need.
      * The event listener method receives a Lsroudi\ClassifiedAdsBundle\Event\FilterClassifiedAdsResponseEvent instance.
      */
-    const AD_ADD_COMPLETED = 'lsroudi.ad.completed';    
+    const AD_ADD_COMPLETED = 'lsroudi.ad.add.completed';    
+    
+    
+    /**
+     * The AD_ADD_INIT event occurs before bind ad object.
+     *
+     * This event allows you to modify ad object before bind it to the form.
+     * The event listener method receives a Lsroudi\ClassifiedAdsBundle\Event\FilterClassifiedAdsResponseEvent instance.
+     */
+    const AD_ADD_INIT = 'lsroudi.ad.add.init';      
     
     /**
      * The AD_LIST_INIT event occurs after query to generate ad list.
