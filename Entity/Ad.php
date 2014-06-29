@@ -51,6 +51,14 @@ class Ad  implements AdInterface
      * @ORM\JoinColumn(name="ad_id", referencedColumnName="id")
      */
     protected $category;
+
+     /**
+     * @var Lsroudi\ClassifiedAdsBundle\Entity\Tag
+     *
+     * @ORM\ManyToMany(targetEntity="Lsroudi\ClassifiedAdsBundle\Entity\Tag", cascade={"persist"})
+     * @ORM\JoinColumn(name="ad_id", referencedColumnName="id")
+     */
+    protected $tag;
     
     /**
      * @var boolean
@@ -63,6 +71,7 @@ class Ad  implements AdInterface
     {
         $this->createdAt = new \DateTime('now');
         $this->category = new ArrayCollection();
+        $this->tag = new ArrayCollection();        
         $this->enabled = false;
     }
 
@@ -113,6 +122,25 @@ class Ad  implements AdInterface
         
         return $this;
     }
+    
+    public function getTag()
+    {
+        return $this->tag;
+    }
+    
+    public function setTag(TagInterface $tag)
+    {
+        $this->addTag($tag);
+        
+        return $this;
+    }
+    
+    public function addTag(TagInterface $tag)
+    {
+        $this->tag->add($tag);
+        
+        return $this;
+    }    
     
     public function setEnabled($boolean)
     {
