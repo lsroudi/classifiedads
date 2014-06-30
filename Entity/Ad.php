@@ -48,7 +48,6 @@ class Ad  implements AdInterface
      *
      * @Assert\NotBlank(message = "lsroudi_classified_ads.category.name.not_blank",groups={"Default"}) 
      * @ORM\ManyToMany(targetEntity="Lsroudi\ClassifiedAdsBundle\Entity\Category", cascade={"persist"})
-     * @ORM\JoinColumn(name="ad_id", referencedColumnName="id")
      */
     protected $category;
 
@@ -56,7 +55,6 @@ class Ad  implements AdInterface
      * @var Lsroudi\ClassifiedAdsBundle\Entity\Tag
      *
      * @ORM\ManyToMany(targetEntity="Lsroudi\ClassifiedAdsBundle\Entity\Tag", cascade={"persist"})
-     * @ORM\JoinColumn(name="ad_id", referencedColumnName="id")
      */
     protected $tag;
     
