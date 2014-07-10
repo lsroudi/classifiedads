@@ -107,9 +107,12 @@ class Ad  implements AdInterface
         return $this->category;
     }
     
-    public function setCategory(CategoryInterface $category)
+    public function setCategory(CategoryInterface $category = null)
     {
-        $this->addCategory($category);
+        if($category instanceof CategoryInterface){
+            
+            $this->addCategory($category);
+        }
         
         return $this;
     }
