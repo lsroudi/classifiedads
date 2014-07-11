@@ -14,9 +14,7 @@ namespace Lsroudi\ClassifiedAdsBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Category
- * @ORM\Entity()
- * @ORM\Table(name="lsroudi_classified_category")
+ * @ORM\MappedSuperclass
  */
 class Category implements CategoryInterface 
 {

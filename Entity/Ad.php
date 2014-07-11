@@ -43,11 +43,9 @@ class Ad  implements AdInterface
      */
     protected $description;
     
-     /**
-     * @var Lsroudi\ClassifiedAdsBundle\Entity\Category
+    /**
      *
-     * @Assert\NotBlank(message = "lsroudi_classified_ads.category.name.not_blank",groups={"Default"}) 
-     * @ORM\ManyToMany(targetEntity="Lsroudi\ClassifiedAdsBundle\Entity\Category", cascade={"persist"})
+     * @var ArrayCollection 
      */
     protected $category;
 
