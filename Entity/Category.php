@@ -14,7 +14,9 @@ namespace Lsroudi\ClassifiedAdsBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\MappedSuperclass
+ * Category
+ * @ORM\Entity()
+ * @ORM\Table(name="lsroudi_classified_category")
  */
 class Category implements CategoryInterface 
 {
@@ -34,7 +36,7 @@ class Category implements CategoryInterface
     protected $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Group", inversedBy="category")
+     * @ORM\ManyToOne(targetEntity="Lsroudi\ClassifiedAdsBundle\Entity\Group", inversedBy="category")
      **/
     protected $group;  
     

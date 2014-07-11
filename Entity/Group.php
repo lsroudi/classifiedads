@@ -36,7 +36,7 @@ class Group
     protected $name;
 
     /**
-     *  @ORM\OneToMany(targetEntity="Category", mappedBy="group")
+     *  @ORM\OneToMany(targetEntity="Lsroudi\ClassifiedAdsBundle\Entity\Category", mappedBy="group")
      */
     protected $category; 
     
