@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Description of Category
+ * Description of Group
  *
  * (c) lsroudi <http://lsroudi.com/> <lsroudi@gmail.com>
  * 
@@ -14,9 +14,11 @@ namespace Lsroudi\ClassifiedAdsBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\MappedSuperclass
+ * Groupe
+ * @ORM\Entity()
+ * @ORM\Table(name="lsroudi_classified_group")
  */
-class Category implements CategoryInterface 
+class Group 
 {
     
     /**
@@ -34,9 +36,9 @@ class Category implements CategoryInterface
     protected $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Group", inversedBy="category")
-     **/
-    protected $group;  
+     *  @ORM\OneToMany(targetEntity="Category", mappedBy="group")
+     */
+    protected $category; 
     
     public function getId()
     {
